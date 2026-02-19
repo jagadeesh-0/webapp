@@ -1,0 +1,15 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: Maven@3
+    inputs:
+      goals: 'package'
+
+  - task: Docker@2
+    inputs:
+      command: 'buildAndPush'
+      repository: 'myapp'
